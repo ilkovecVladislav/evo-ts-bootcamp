@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[Demo](https://quirky-fermi-295421.netlify.app/).
 
 ## Available Scripts
 
