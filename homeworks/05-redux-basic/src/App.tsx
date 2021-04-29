@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 
 import { useBalance } from "./selectors";
@@ -34,6 +34,13 @@ function App() {
   const handleTax = () => {
     dispatch(subtractPercentage(14));
   };
+
+  useEffect(() => {
+    dispatch(updateBalance(1000));
+    dispatch(credit(200));
+    dispatch(debit(50));
+    dispatch(subtractPercentage(14));
+  }, [dispatch]);
 
   return (
     <div className="App">
