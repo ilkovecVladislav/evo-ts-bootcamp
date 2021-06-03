@@ -1,8 +1,8 @@
-const program = require("commander");
-const path = require("path");
-const fs = require("fs");
-const packageJson = require("../package.json");
-const { Caesar } = require("./crypto");
+import program from "commander";
+import path from "path";
+import fs from "fs";
+import { Caesar } from "./crypto";
+import packageJson from "../package.json";
 
 type Options = {
   shift: number;
