@@ -1,12 +1,12 @@
-const fs = require("fs");
-const path = require("path");
-const { EventEmitter } = require("events");
+import fs from "fs";
+import path from "path";
+import { EventEmitter } from "events";
 
-class DirWatcher {
+export class DirWatcher {
   dirPath: string;
   delay: number;
   maxFiles: number | null;
-  eventEmitter: typeof EventEmitter;
+  eventEmitter: EventEmitter;
   cache = new Map<string, string>();
 
   constructor(
@@ -15,7 +15,7 @@ class DirWatcher {
       pathToDir,
       maxFiles,
     }: { delay: number; pathToDir: string; maxFiles: number | null },
-    eventEmitter: typeof EventEmitter
+    eventEmitter: EventEmitter
   ) {
     this.dirPath = pathToDir;
     this.delay = delay;
@@ -25,11 +25,15 @@ class DirWatcher {
 
   watch() {
     setInterval(async () => {
-      await fs.readdir(this.dirPath, (error: Error, files: string[]) => {
+      await fs.readdir(this.dirPath, (error, files) => {
         if (error) {
           return;
         }
-        files.forEach((file) => {
+        const filteredFiles = files.filter((fileName) =>
+          /.+(\.csv)$/.test(fileName)
+        );
+
+        filteredFiles.forEach((file) => {
           if (
             (!this.cache.has(file) &&
               this.maxFiles &&
@@ -47,6 +51,3 @@ class DirWatcher {
     }, this.delay);
   }
 }
-
-exports.DirWatcher = DirWatcher;
-export {};

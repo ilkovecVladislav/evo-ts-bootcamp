@@ -1,7 +1,7 @@
-const { EventEmitter } = require("events");
-const { DirWatcher } = require("./dirWatcher");
-const { Importer } = require("./importer");
-const { config } = require("./config");
+import { EventEmitter } from "events";
+import { DirWatcher } from "./dirWatcher";
+import { Importer } from "./importer";
+import { config } from "./config";
 
 const eventEmitter = new EventEmitter();
 const dirWatcher = new DirWatcher(config, eventEmitter);

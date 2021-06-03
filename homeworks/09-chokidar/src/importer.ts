@@ -1,10 +1,10 @@
 import fs from "fs";
-const csv = require("csvtojson");
-const { EventEmitter } = require("events");
+import csv from "csvtojson";
+import { EventEmitter } from "events";
 
-class Importer {
-  eventEmitter;
-  constructor(eventEmitter: typeof EventEmitter) {
+export class Importer {
+  eventEmitter: EventEmitter;
+  constructor(eventEmitter: EventEmitter) {
     this.eventEmitter = eventEmitter;
   }
 
@@ -12,7 +12,7 @@ class Importer {
     this.eventEmitter.on("dirwatcher:changed", (filePath: string) =>
       csv()
         .fromFile(filePath)
-        .then((jsonObj: string) => {
+        .then((jsonObj: unknown[]) => {
           console.log(jsonObj);
         })
     );
@@ -32,6 +32,3 @@ class Importer {
     return csv().fromString(file);
   }
 }
-
-exports.Importer = Importer;
-export {};
