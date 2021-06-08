@@ -57,11 +57,15 @@ class App extends Component<{}, State> {
           <SubmitButton type="submit">Search</SubmitButton>
         </Form>
         <Gallery>
-          {images.map((image, index) => {
+          {images?.map((image, index) => {
             const [w, h] = sizes[index];
+            const imageStyles = {
+              gridColumn: w > 1 ? `span ${w}` : "unset",
+              gridRow: h > 1 ? `span ${h}` : "unset",
+            };
 
             return (
-              <ImageContainer key={image.id} w={w} h={h}>
+              <ImageContainer key={image.id} style={imageStyles}>
                 <StyledImage
                   loading="lazy"
                   src={image.urls.regular}

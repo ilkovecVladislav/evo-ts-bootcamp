@@ -7,11 +7,9 @@ export const Gallery = styled.div`
   grid-auto-flow: dense;
 `;
 
-export const ImageContainer = styled.figure<{ w: number; h: number }>`
+export const ImageContainer = styled.figure`
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
-  ${({ w }) => (w > 1 ? `grid-column: span ${w}` : "")};
-  ${({ h }) => (h > 1 ? `grid-row: span ${h};` : "")};
 `;
 
 export const Image = styled.img`
