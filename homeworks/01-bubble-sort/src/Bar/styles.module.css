@@ -1,0 +1,11 @@
+.bar {
+  width: 10px;
+  border: 1px solid #810000;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  background-color: #ce1212;
+}
+
+.small {
+  border: none;
+}

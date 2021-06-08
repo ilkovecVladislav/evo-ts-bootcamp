@@ -1,0 +1,13 @@
+.input {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  margin-bottom: 5px;
+}
+
+.input input {
+  padding: 10px;
+}
