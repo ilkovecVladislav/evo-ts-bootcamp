@@ -1,0 +1,21 @@
+.container {
+  background-color: #eeebdd;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  margin: 25px auto;
+  height: 400px;
+  max-height: 550px;
+  width: 500px;
+  width: 100%;
+  max-width: 960px;
+  overflow-x: auto;
+  padding: 5px 5px 0;
+}
+
+.status {
+  margin: 10px auto;
+  width: 200px;
+  font-size: 20px;
+  padding: 10px;
+}
