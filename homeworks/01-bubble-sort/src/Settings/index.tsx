@@ -1,6 +1,6 @@
 import { ChangeEvent, FormEvent, Component } from "react";
-
 import Input from "components/Input";
+import style from "./styles.module.css";
 
 type Props = {
   arraylength: number;
@@ -16,16 +16,11 @@ class Settings extends Component<Props> {
   };
 
   render() {
-    const {
-      arraylength,
-      sorting,
-      speed,
-      onChangeArrayLength,
-      onChangeSpeed,
-    } = this.props;
+    const { arraylength, sorting, speed, onChangeArrayLength, onChangeSpeed } =
+      this.props;
 
     return (
-      <form className="settings" onSubmit={this.handleSubmit}>
+      <form className={style.settings} onSubmit={this.handleSubmit}>
         <Input
           label="Number of elements"
           type="number"

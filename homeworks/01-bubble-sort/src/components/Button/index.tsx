@@ -1,12 +1,12 @@
 import { FC, ComponentPropsWithoutRef } from "react";
+import style from "./styles.module.css";
 
 type Props = {
-  type?: "button" | "reset" | "submit";
   text: string;
 } & ComponentPropsWithoutRef<"button">;
 
 const Button: FC<Props> = ({ text, type = "button", ...rest }) => (
-  <button className="button" type={type} {...rest}>
+  <button className={style.button} type={type} {...rest}>
     {text}
   </button>
 );

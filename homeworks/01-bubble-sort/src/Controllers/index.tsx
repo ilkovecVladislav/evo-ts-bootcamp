@@ -1,6 +1,6 @@
 import { FC } from "react";
-
 import Button from "components/Button";
+import style from "./styles.module.css";
 
 type Props = {
   pause: boolean;
@@ -24,7 +24,7 @@ const Controllers: FC<Props> = (props) => {
   } = props;
 
   return (
-    <div className="controllers">
+    <div className={style.controllers}>
       <Button text="New set" onClick={onNewSetClick} />
 
       {sorting && pause && <Button text="Resume" onClick={onResumeClick} />}
