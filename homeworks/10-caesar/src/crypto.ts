@@ -46,8 +46,8 @@ const decrypt = (text: string, shift: number): string => {
 };
 
 export class Caesar extends Transform {
-  action;
-  shift;
+  action: string;
+  shift: number;
 
   constructor(action: string, shift: number) {
     super();
