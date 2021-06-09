@@ -1,0 +1,24 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.game-field {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32pt' height='32pt' viewBox='0 0 32 32'%3E%3Cpath d='M3.863 16C3.863 9.297 9.297 3.863 16 3.863V1.93C8.23 1.93 1.93 8.23 1.93 16c0 7.77 6.3 14.07 14.07 14.07v-1.933C9.297 28.137 3.863 22.703 3.863 16zm0 0' fill='%237d8fe5'/%3E%3Cpath d='M16 1.93v1.933c6.703 0 12.137 5.434 12.137 12.137S22.703 28.137 16 28.137v1.933c7.77 0 14.07-6.3 14.07-14.07 0-7.77-6.3-14.07-14.07-14.07zm0 0' fill='%23666ddc'/%3E%3Cpath d='M16 7.727v1.93a6.343 6.343 0 110 12.687v1.93A8.272 8.272 0 0024.273 16 8.272 8.272 0 0016 7.727zm0 0' fill='%23ff336d'/%3E%3Cpath d='M9.656 16A6.343 6.343 0 0116 9.656v-1.93A8.272 8.272 0 007.727 16 8.272 8.272 0 0016 24.273v-1.93A6.343 6.343 0 019.656 16zm0 0' fill='%23ff545a'/%3E%3Cpath d='M16 13.52v4.96A2.484 2.484 0 0018.48 16 2.484 2.484 0 0016 13.52zm0 0' fill='%23666ddc'/%3E%3Cpath d='M16.547 16c0-1.367-.246-2.48-.547-2.48A2.484 2.484 0 0013.52 16 2.484 2.484 0 0016 18.48c.3 0 .547-1.113.547-2.48zm0 0M16 20.41a.964.964 0 00-.965.965v9.66a.964.964 0 101.93 0v-9.66A.964.964 0 0016 20.41zm0 0M16 0a.964.964 0 00-.965.965v9.66a.964.964 0 101.93 0V.965A.964.964 0 0016 0zm0 0' fill='%237d8fe5'/%3E%3Cpath d='M11.59 16a.964.964 0 00-.965-.965H.965a.964.964 0 100 1.93h9.66c.531 0 .965-.43.965-.965zm0 0M32 16a.964.964 0 00-.965-.965h-9.66a.964.964 0 100 1.93h9.66c.531 0 .965-.43.965-.965zm0 0' fill='%23666ddc'/%3E%3C/svg%3E")
+      16 16,
+    pointer;
+}
