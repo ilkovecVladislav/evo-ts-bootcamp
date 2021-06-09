@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "rootDir": ".",
+    "outDir": ".",
+    "esModuleInterop": true,
+    "strict": true,
+    "resolveJsonModule": true,
+    "baseUrl": ".",
+    "composite": true
+  },
+  "files": ["package.json"]
+}
