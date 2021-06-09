@@ -1,5 +1,7 @@
 [Demo](https://musing-shaw-197471.netlify.app/).
 
+To run the project locally add ".env" file with YOUR OWN MARS API KEY(you can use temp api key, read the end of the README file)
+
 ## Available Scripts
 
 In the project directory, you can run:
@@ -42,3 +44,5 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+MARS_API_KEY = aZ6TQDnvVnCzV1OsLt3ExZDIa0CpV38lvafz9dZi
