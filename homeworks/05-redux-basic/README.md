@@ -1,6 +1,7 @@
 # App
 
 [Demo](https://quirky-fermi-295421.netlify.app/).
+[Second part of homework](https://codesandbox.io/s/001-redux-forked-ghzsc)
 
 ## Available Scripts
 

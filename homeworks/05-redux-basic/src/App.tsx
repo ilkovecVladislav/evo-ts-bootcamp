@@ -8,10 +8,13 @@ import "./App.css";
 function App() {
   const balance = useBalance();
   const dispatch = useDispatch();
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState(0);
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setValue(event.target.value);
+    const newValue = Number(event.target.value);
+    if (event.target.value && newValue >= 0) {
+      setValue(Number(event.target.value));
+    }
   };
 
   const handleSubmitNewBalance = (event: FormEvent<HTMLFormElement>) => {
@@ -19,7 +22,7 @@ function App() {
     const newBalance = Number(value);
     if (!Number.isNaN(newBalance)) {
       dispatch(updateBalance(newBalance));
-      setValue("");
+      setValue(0);
     }
   };
 
@@ -48,7 +51,9 @@ function App() {
       <form onSubmit={handleSubmitNewBalance}>
         <h3>Set new balance</h3>
         <input type="number" value={value} onChange={handleChange} />
-        <button type="submit">Set Balance</button>
+        <button type="submit" disabled={!balance}>
+          Set Balance
+        </button>
       </form>
       <hr />
 
