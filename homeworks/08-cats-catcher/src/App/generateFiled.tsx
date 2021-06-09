@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import random from "lodash/random";
 
-import { WINDOW_SIZE } from "./contants";
+import { WINDOW_SIZE } from "./constants";
 
 const generateGameField = (): boolean[][] =>
   Array.from({ length: 10 }, () => Array.from({ length: 10 }, () => true));
@@ -38,5 +38,5 @@ export const useGenerateWindowsPositions = () => {
     handleGeneratePositions();
   }, [handleGeneratePositions]);
 
-  return {positions, onReset: handleGeneratePositions};
+  return { positions, onReset: handleGeneratePositions };
 };

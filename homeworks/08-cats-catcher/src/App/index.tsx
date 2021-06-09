@@ -1,6 +1,6 @@
 import { FC, useState, useEffect, useRef } from "react";
 import { of, interval, fromEvent, combineLatest } from "rxjs";
-import { map, filter } from "rxjs/operators";
+import { map, filter, switchMap, startWith } from "rxjs/operators";
 import random from "lodash/random";
 
 import { ReactComponent as WindowIcon } from "assets/icons/window.svg";
@@ -19,12 +19,15 @@ const App: FC = () => {
     const positions$ = of(positions);
     const interval$ = interval(1000);
 
+    const catPosition$ = of(positions).pipe(
+      filter(Boolean),
+      map((pos) => pos[random(0, 11)])
+    );
+
     const cat$ = combineLatest([positions$, interval$])
       .pipe(
-        filter(([pos]) => {
-          return !!pos;
-        }),
-        map(([pos]) => pos![random(0, 9)])
+        startWith([0, 0]),
+        switchMap(() => catPosition$)
       )
       .subscribe((val) => setCatPosition(val));
 

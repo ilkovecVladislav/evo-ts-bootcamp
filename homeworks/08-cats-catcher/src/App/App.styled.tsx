@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 
 import wallIcon from "assets/icons/wall.svg";
 
-import { WINDOW_SIZE } from "./contants";
+import { WINDOW_SIZE } from "./constants";
 
 export const Container = styled.div`
   width: 800px;
