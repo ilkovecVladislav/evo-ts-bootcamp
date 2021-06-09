@@ -1,7 +1,14 @@
-import BinaryTree from "./binaryTree";
+import BinaryTree, { IBinaryTree } from "./binaryTree";
 import { TreeNode } from "./types";
 
-export default class BinarySearchTree extends BinaryTree<number> {
+interface IBinarySearchTree extends IBinaryTree<number> {
+  has(value: number): boolean;
+}
+
+export default class BinarySearchTree
+  extends BinaryTree<number>
+  implements IBinarySearchTree
+{
   public has(value: number): boolean {
     let current: TreeNode<number> | null = this.root;
     let found = false;

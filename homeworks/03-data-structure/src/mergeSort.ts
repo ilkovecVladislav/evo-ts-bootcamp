@@ -3,8 +3,8 @@ const merge = <T>(
   arr1: T[],
   arr2: T[],
   compareFunction: CompareFunction<T>
-) => {
-  let results = [];
+): T[] => {
+  let results: T[] = [];
   let i = 0;
   let j = 0;
 

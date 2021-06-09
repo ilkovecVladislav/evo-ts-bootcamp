@@ -1,18 +1,23 @@
-import { assertNever, inOrder, preOrder, postOrder, bfs } from "./utils";
 import { TraverseType, TreeNode } from "./types";
 
-export default class BinaryTree<T> {
+export interface IBinaryTree<T> {
+  setTree(newNode: TreeNode<T>): void;
+  traverse(traverseType: TraverseType): T[];
+  getColumn(columnOrder: number): T[];
+}
+
+export default class BinaryTree<T> implements IBinaryTree<T> {
   root: TreeNode<T>;
 
   constructor(node: TreeNode<T>) {
     this.root = node;
   }
 
-  public setTree(newNode: TreeNode<T>) {
-   this.insertNode(this.root, newNode);
+  setTree(newNode: TreeNode<T>): void {
+    this.insertNode(this.root, newNode);
   }
 
-  private insertNode(node: TreeNode<T>, newNode: TreeNode<T>) {
+  private insertNode(node: TreeNode<T>, newNode: TreeNode<T>): void {
     if (newNode.value < node.value) {
       if (node.left === null) {
         node.left = newNode;
@@ -30,17 +35,103 @@ export default class BinaryTree<T> {
 
   public traverse(traverseType: TraverseType): T[] {
     switch (traverseType) {
-      case TraverseType.Inorder:
-        return inOrder<T>(this.root);
-      case TraverseType.Preorder:
-        return preOrder<T>(this.root);
-      case TraverseType.Postorder:
-        return postOrder<T>(this.root);
-      case TraverseType.Breadth:
-        return bfs<T>(this.root);
+      case TraverseType.Inorder: {
+        {
+          const stack: TreeNode<T>[] = [];
+          let current: TreeNode<T> | null = this.root;
+          const result = [];
+
+          while (true) {
+            while (current) {
+              stack.push(current);
+              current = current.left;
+            }
+
+            if (stack.length == 0) {
+              break;
+            }
+
+            const lastCurrent = stack.pop();
+
+            if (lastCurrent) {
+              if (lastCurrent.value) {
+                result.push(lastCurrent.value);
+              }
+              current = lastCurrent.right;
+            }
+          }
+
+          return result;
+        }
+      }
+      case TraverseType.Preorder: {
+        let stack: TreeNode<T>[] = [this.root];
+        let result = [];
+
+        while (stack.length) {
+          let current = stack.pop();
+
+          if (current) {
+            if (current.value) {
+              result.push(current.value);
+            }
+            if (current.right) {
+              stack.push(current.right);
+            }
+            if (current.left) {
+              stack.push(current.left);
+            }
+          }
+        }
+
+        return result;
+      }
+      case TraverseType.Postorder: {
+        let stack: TreeNode<T>[] = [this.root];
+        let result = [];
+
+        while (stack.length) {
+          let current = stack.pop();
+
+          if (current) {
+            if (current.value) {
+              result.push(current.value);
+            }
+            if (current.left) {
+              stack.push(current.left);
+            }
+            if (current.right) {
+              stack.push(current.right);
+            }
+          }
+        }
+
+        return result.reverse();
+      }
+      case TraverseType.Breadth: {
+        const result = [];
+        const queue: TreeNode<T>[] = [this.root];
+
+        while (queue.length) {
+          const current = queue.shift();
+          if (current) {
+            if (current.value) {
+              result.push(current.value);
+            }
+            if (current.left) {
+              queue.push(current.left);
+            }
+            if (current.right) {
+              queue.push(current.right);
+            }
+          }
+        }
+
+        return result;
+      }
 
       default:
-        return assertNever(traverseType);
+        throw new Error(`Unexpected argument: ${traverseType}`);
     }
   }
 

@@ -33,56 +33,28 @@ describe("traverse", () => {
     const tree = getNewTree();
 
     expect(tree.traverse(TraverseType.Inorder)).toEqual([
-      14,
-      15,
-      19,
-      20,
-      24,
-      27,
-      35,
-      37,
+      14, 15, 19, 20, 24, 27, 35, 37,
     ]);
   });
   it(`${TraverseType.Preorder} traverse type`, () => {
     const tree = getNewTree();
 
     expect(tree.traverse(TraverseType.Preorder)).toEqual([
-      20,
-      15,
-      14,
-      19,
-      35,
-      27,
-      24,
-      37,
+      20, 15, 14, 19, 35, 27, 24, 37,
     ]);
   });
   it(`${TraverseType.Postorder} traverse type`, () => {
     const tree = getNewTree();
 
     expect(tree.traverse(TraverseType.Postorder)).toEqual([
-      14,
-      19,
-      15,
-      24,
-      27,
-      37,
-      35,
-      20,
+      14, 19, 15, 24, 27, 37, 35, 20,
     ]);
   });
   it(`${TraverseType.Breadth} traverse type`, () => {
     const tree = getNewTree();
 
     expect(tree.traverse(TraverseType.Breadth)).toEqual([
-      20,
-      15,
-      35,
-      14,
-      19,
-      27,
-      37,
-      24,
+      20, 15, 35, 14, 19, 27, 37, 24,
     ]);
   });
   it("throw error for unknown traverse type", () => {
