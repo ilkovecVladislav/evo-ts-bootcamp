@@ -1,21 +1,22 @@
-import * as R from "ramda";
-import React from "react";
-import {Pizza} from "../types";
-import {PizzaBasketItem} from "./PizzaBasketItem";
+import { EnhPizza } from "../types";
+import { PizzaBasketItem } from "./PizzaBasketItem";
 
 interface PizzaBucketProps {
-    pizza: Array<Pizza & {count: number}>,
-    onMinus: (_id: string) => void;
+  data: EnhPizza[];
+  onMinus: (_id: string) => void;
 }
 
-export function PizzaBasket({pizza, onMinus}: PizzaBucketProps) {
-    return R.map((p) =>
-        <PizzaBasketItem
-            _id={p._id}
-            onMinus={onMinus}
-            key={p._id}
-            price={p.price}
-            name={p.name}
-            count={p.count}
-        />, pizza);
-}
+export const PizzaBasket = ({ data, onMinus }: PizzaBucketProps) => (
+  <>
+    {data.map((pizza) => (
+      <PizzaBasketItem
+        _id={pizza._id}
+        key={pizza._id}
+        price={Number((pizza.price * pizza.count).toFixed(2))}
+        name={pizza.name}
+        count={pizza.count}
+        onMinus={onMinus}
+      />
+    ))}
+  </>
+);
