@@ -1,0 +1,30 @@
+.button {
+  padding: 10px;
+  color: blueviolet;
+  border: 3px solid violet;
+  background-color: transparent;
+  font-weight: 500;
+  font-size: 18px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 100px;
+}
+
+.button:hover {
+  background-color: violet;
+  color: white;
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  background-color: rgb(204, 181, 204);
+}
+
+.button:hover:disabled {
+  color: blueviolet;
+}
+
+.button + .button {
+  margin-left: 15px;
+}
