@@ -8,7 +8,7 @@ const initialState: FavouriteState = {
   list: [],
 };
 
-export const counterSlice = createSlice({
+export const favouriteSlice = createSlice({
   name: 'favourite',
   initialState,
   reducers: {
@@ -22,6 +22,6 @@ export const counterSlice = createSlice({
   },
 });
 
-export const { addToFavourite, removeFromFavourite } = counterSlice.actions;
+export const { addToFavourite, removeFromFavourite } = favouriteSlice.actions;
 
-export default counterSlice.reducer;
+export default favouriteSlice.reducer;

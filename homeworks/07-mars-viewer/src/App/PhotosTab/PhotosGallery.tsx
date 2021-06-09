@@ -1,16 +1,17 @@
 import { FC, useCallback } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import Photo from 'components/Photo';
 import { addToFavourite, removeFromFavourite } from 'reducers/favourite';
-import { useIsLoading, useCurrentSolPhotos, useFavouritesIds } from 'reducers/selectors';
+import { currentSolPhotosSelector, favouritesSelector } from 'reducers/selectors';
+import type { RootState } from 'store';
 import { PhotosContainer, TextLabel } from '../App.styled';
 
 const PhotosGallery: FC = () => {
   const dispatch = useDispatch();
-  const isLoading = useIsLoading();
-  const photos = useCurrentSolPhotos();
-  const favouritesIds = useFavouritesIds();
+  const isLoading = useSelector((state: RootState) => state.photos.isLoading);
+  const photos = useSelector(currentSolPhotosSelector);
+  const favouritesIds = useSelector(favouritesSelector);
 
   const handleFavourite = useCallback(
     (isFavourite: boolean, id: number) => {
@@ -23,7 +24,7 @@ const PhotosGallery: FC = () => {
     [dispatch],
   );
 
-  if (Array.isArray(photos)) {
+  if (photos && photos.length > 0) {
     return (
       <PhotosContainer>
         {photos.map((photo) => (
@@ -38,7 +39,15 @@ const PhotosGallery: FC = () => {
     );
   }
 
-  return <TextLabel>{isLoading ? 'Loading...' : photos}</TextLabel>;
+  if (isLoading) {
+    return <TextLabel>Loading...</TextLabel>;
+  }
+
+  if (photos && photos?.length === 0) {
+    return <TextLabel>No photos for this sol </TextLabel>;
+  }
+
+  return <TextLabel>Photos are not loaded</TextLabel>;
 };
 
 export default PhotosGallery;

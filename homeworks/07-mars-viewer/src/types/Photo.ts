@@ -1,4 +1,4 @@
-type Photo = {
+export type PhotoJson = {
   id: number;
   sol: number;
   img_src: string;
@@ -18,4 +18,11 @@ type Photo = {
   };
 };
 
-export default Photo;
+export type Photo = {
+  id: number;
+  sol: number;
+  imgSrc: string;
+  earthDate: string;
+  cameraName: string;
+  roverName: string;
+};

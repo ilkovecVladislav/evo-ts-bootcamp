@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 
-import Photo from 'types/Photo';
+import { PhotoJson, Photo } from 'types/Photo';
 
 interface PhotosState {
   selectedSol: string;
@@ -22,14 +22,23 @@ export const loadPhotos = createAsyncThunk('photos/loadPhotos', async (sol: stri
       sol,
       api_key: process.env.REACT_APP_API_KEY,
     }).toString();
-    const { photos } = await fetch(
+    const { photos }: { photos: PhotoJson[] } = await fetch(
       `${'https://api.nasa.gov/mars-photos/api/v1/rovers/perseverance/photos'}?${params}`,
     ).then((response) => response.json());
 
-    return Promise.resolve({ sol, photos });
+    const normalizedPhotos = photos.map((item) => ({
+      id: item.id,
+      sol: item.sol,
+      imgSrc: item.img_src,
+      earthDate: item.earth_date,
+      cameraName: item.camera.full_name,
+      roverName: item.rover.name,
+    }));
+
+    return Promise.resolve({ sol, photos: normalizedPhotos });
   }
 
-  return Promise.resolve({ sol, photos: [] });
+  return Promise.reject(new Error('Missing API KEY'));
 });
 
 export const photosSlice = createSlice({

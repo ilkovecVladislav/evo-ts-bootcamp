@@ -1,16 +1,21 @@
 import { ChangeEvent, FC, FormEvent } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { setSol, loadPhotos } from 'reducers/photos';
-import { useSelectedSol } from 'reducers/selectors';
+import { selectedSolSelector } from 'reducers/selectors';
 import { FormContainer, FormTitle, Input, Button } from './PhotosTab.styled';
 
 const Form: FC = () => {
   const dispatch = useDispatch();
-  const sol = useSelectedSol();
+  const sol = useSelector(selectedSolSelector);
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    dispatch(setSol(event.target.value));
+    const newSolValue = Number(event.target.value);
+    if (newSolValue >= 0) {
+      dispatch(setSol(event.target.value));
+    } else {
+      dispatch(setSol('0'));
+    }
   };
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
@@ -23,7 +28,7 @@ const Form: FC = () => {
     <FormContainer>
       <FormTitle>Select Sol and press &ldquo;load&rdquo;</FormTitle>
       <form onSubmit={handleSubmit}>
-        <Input type="number" value={sol} onChange={handleChange} step={1} />
+        <Input type="number" value={sol} onChange={handleChange} step={1} min={0} />
         <Button type="submit">load</Button>
       </form>
     </FormContainer>

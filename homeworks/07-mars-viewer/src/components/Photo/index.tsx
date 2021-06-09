@@ -1,8 +1,7 @@
-import { FC, useState } from 'react';
+import { FC } from 'react';
 
 import { ReactComponent as HeartIcon } from 'assets/icons/heart.svg';
-import unicornIcon from 'assets/icons/unicorn.svg';
-import PhotoType from 'types/Photo';
+import { Photo as PhotoType } from 'types/Photo';
 import { Figure, Image, FigureCaption, FavouriteButton } from './Photo.styled';
 
 type Props = {
@@ -12,15 +11,10 @@ type Props = {
 };
 
 const Photo: FC<Props> = ({ data, isFavourite, onFavouriteClick }) => {
-  const { id, img_src, camera, rover, earth_date } = data;
-  const [isImageLoaded, setIsImageLoaded] = useState(false);
+  const { id, imgSrc, cameraName, roverName, earthDate } = data;
 
   const handleFavouriteClick = () => {
     onFavouriteClick(!isFavourite, id);
-  };
-
-  const handleLoadImage = () => {
-    setIsImageLoaded(true);
   };
 
   return (
@@ -28,18 +22,11 @@ const Photo: FC<Props> = ({ data, isFavourite, onFavouriteClick }) => {
       <FavouriteButton type="button" onClick={handleFavouriteClick}>
         <HeartIcon className={isFavourite ? 'active' : ''} />
       </FavouriteButton>
-      {!isImageLoaded && <Image src={unicornIcon} alt="placeholder" />}
-      <Image
-        src={img_src}
-        data-set={unicornIcon}
-        loading="lazy"
-        alt={camera.full_name}
-        onLoad={handleLoadImage}
-      />
+      <Image src={imgSrc} loading="lazy" alt={cameraName} />
       <FigureCaption>
         <p>
-          Rover: {rover.name}, Camera: {camera.full_name}, Photo date:{' '}
-          <time dateTime={earth_date}>{new Date(earth_date).toLocaleDateString('ru-RU')}</time>
+          Rover: {roverName}, Camera: {cameraName}, Photo date:{' '}
+          <time dateTime={earthDate}>{new Date(earthDate).toLocaleDateString('ru-RU')}</time>
         </p>
       </FigureCaption>
     </Figure>

@@ -1,15 +1,15 @@
 import { FC, useCallback } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { useFavouritesPhotos, useFavouritesIds } from 'reducers/selectors';
+import { favouritesPhotosSelector, favouritesSelector } from 'reducers/selectors';
 import { addToFavourite, removeFromFavourite } from 'reducers/favourite';
 import Photo from 'components/Photo';
 import { PhotosContainer, TextLabel } from '../App.styled';
 
 const FavouritesTab: FC = () => {
   const dispatch = useDispatch();
-  const photos = useFavouritesPhotos();
-  const favouritesIds = useFavouritesIds();
+  const photos = useSelector(favouritesPhotosSelector);
+  const favouritesIds = useSelector(favouritesSelector);
 
   const handleFavourite = useCallback(
     (isFavourite: boolean, id: number) => {
