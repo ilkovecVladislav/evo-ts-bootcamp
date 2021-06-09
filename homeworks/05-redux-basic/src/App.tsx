@@ -51,7 +51,7 @@ function App() {
       <form onSubmit={handleSubmitNewBalance}>
         <h3>Set new balance</h3>
         <input type="number" value={value} onChange={handleChange} />
-        <button type="submit" disabled={!balance}>
+        <button type="submit" disabled={!value}>
           Set Balance
         </button>
       </form>
