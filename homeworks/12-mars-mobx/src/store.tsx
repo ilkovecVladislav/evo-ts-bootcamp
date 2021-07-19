@@ -5,7 +5,7 @@ import { createContext } from "./storeUtils";
 const MARS_API_KEY = "aZ6TQDnvVnCzV1OsLt3ExZDIa0CpV38lvafz9dZi";
 
 class Sols {
-  selectedSol: string = "1";
+  selectedSol: string = "0";
   isLoading: boolean = false;
   sols: {
     [key: string]: Photo[];

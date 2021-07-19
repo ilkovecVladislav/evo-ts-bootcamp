@@ -27,7 +27,7 @@ const Photo: FC<Props> = ({ data, isFavourite, onFavouriteClick }) => {
         <p>
           Rover: {roverName}, Camera: {cameraName}, Photo date:{" "}
           <time dateTime={earthDate}>
-            {new Date(earthDate).toLocaleDateString("ru-RU")}
+            {new Date(earthDate).toLocaleDateString()}
           </time>
         </p>
       </FigureCaption>
