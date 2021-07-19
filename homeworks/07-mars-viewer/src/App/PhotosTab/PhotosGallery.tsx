@@ -44,7 +44,7 @@ const PhotosGallery: FC = () => {
   }
 
   if (photos && photos?.length === 0) {
-    return <TextLabel>No photos for this sol </TextLabel>;
+    return <TextLabel>No photos for this sol</TextLabel>;
   }
 
   return <TextLabel>Photos are not loaded</TextLabel>;

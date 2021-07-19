@@ -4,13 +4,13 @@ import { ReactComponent as HeartIcon } from 'assets/icons/heart.svg';
 import { Photo as PhotoType } from 'types/Photo';
 import { Figure, Image, FigureCaption, FavouriteButton } from './Photo.styled';
 
-type Props = {
+interface PhotoProps {
   data: PhotoType;
   isFavourite: boolean;
   onFavouriteClick: (value: boolean, id: number) => void;
-};
+}
 
-const Photo: FC<Props> = ({ data, isFavourite, onFavouriteClick }) => {
+const Photo: FC<PhotoProps> = ({ data, isFavourite, onFavouriteClick }) => {
   const { id, imgSrc, cameraName, roverName, earthDate } = data;
 
   const handleFavouriteClick = () => {
@@ -26,7 +26,7 @@ const Photo: FC<Props> = ({ data, isFavourite, onFavouriteClick }) => {
       <FigureCaption>
         <p>
           Rover: {roverName}, Camera: {cameraName}, Photo date:{' '}
-          <time dateTime={earthDate}>{new Date(earthDate).toLocaleDateString('ru-RU')}</time>
+          <time dateTime={earthDate}>{new Date(earthDate).toLocaleDateString()}</time>
         </p>
       </FigureCaption>
     </Figure>
