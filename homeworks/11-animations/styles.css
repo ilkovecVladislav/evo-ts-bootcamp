@@ -1,0 +1,132 @@
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+}
+
+@keyframes outer-circle {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(-359deg);
+  }
+}
+
+#outer-circle {
+  animation-name: outer-circle;
+  animation-duration: 2s;
+  animation-timing-function: cubic-bezier(0.83, 0, 0.17, 1);
+  animation-iteration-count: infinite;
+  transform-origin: center;
+  animation-delay: 250ms;
+}
+
+@keyframes hexagon-animation {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  25% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  75% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+}
+
+.hexagon {
+  animation-name: hexagon-animation;
+  animation-duration: 3s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+#hexagon-2 {
+  animation-delay: 150ms;
+}
+
+#hexagon-3 {
+  animation-delay: 300ms;
+}
+
+#hexagon-4 {
+  animation-delay: 450ms;
+}
+
+#hexagon-5 {
+  animation-delay: 600ms;
+}
+
+#hexagon-6 {
+  animation-delay: 750ms;
+}
+
+#hexagon-7 {
+  animation-delay: 900ms;
+}
+
+@keyframes inner-circle {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  50% {
+    stroke-dasharray: 45 430.6;
+  }
+
+  90% {
+    stroke-dasharray: 20 440.6;
+  }
+
+  100% {
+    stroke-dasharray: 45 430.6;
+    transform: rotate(359deg);
+  }
+}
+
+#inner-circle {
+  stroke-dasharray: 45 430.6;
+  animation-name: inner-circle;
+  animation-duration: 2s;
+  animation-timing-function: cubic-bezier(0.56, 0.99, 0.64, 0.96);
+  animation-iteration-count: infinite;
+  transform-origin: center;
+  z-index: 2;
+}
+
+@keyframes second-inner-circle {
+  0% {
+    stroke-dashoffset: 430;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+#second-inner-circler {
+  animation-name: second-inner-circle;
+  stroke-dasharray: 462.58;
+  animation-duration: 2s;
+  animation-delay: 100ms;
+  animation-timing-function: cubic-bezier(0.56, 0.99, 0.63, 1.04);
+  animation-iteration-count: infinite;
+  transform-origin: center;
+  z-index: 1;
+}
