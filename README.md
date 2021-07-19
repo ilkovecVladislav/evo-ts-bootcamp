@@ -5,3 +5,4 @@
 3. [Redux basic](https://quirky-fermi-295421.netlify.app/)
 4. [Mars viewer](https://musing-shaw-197471.netlify.app/)
 5. [Cats catcher](https://nifty-nobel-522ba8.netlify.app/).
+6. [Animations](https://cocky-pare-85890a.netlify.app/)
